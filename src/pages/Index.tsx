@@ -108,52 +108,53 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="min-h-screen bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
       <div className="flex h-screen">
-        <aside className="w-16 bg-card/50 backdrop-blur-xl border-r flex flex-col items-center py-6 gap-6">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+        <aside className="w-16 bg-white/10 backdrop-blur-2xl border-r border-white/20 flex flex-col items-center py-6 gap-6 relative z-10">
+          <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-lg flex items-center justify-center">
             <Icon name="Layout" size={20} className="text-white" />
           </div>
           <nav className="flex flex-col gap-4">
             <button 
               onClick={() => setActiveTab('tasks')}
-              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
-                activeTab === 'tasks' ? 'bg-primary text-white' : 'text-foreground'
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                activeTab === 'tasks' ? 'bg-white/30 backdrop-blur-xl border border-white/40 shadow-lg text-white' : 'hover:bg-white/10 text-foreground'
               }`}
             >
               <Icon name="CheckSquare" size={20} />
             </button>
             <button 
               onClick={() => setActiveTab('notes')}
-              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
-                activeTab === 'notes' ? 'bg-primary text-white' : 'text-foreground'
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                activeTab === 'notes' ? 'bg-white/30 backdrop-blur-xl border border-white/40 shadow-lg text-white' : 'hover:bg-white/10 text-foreground'
               }`}
             >
               <Icon name="StickyNote" size={20} />
             </button>
             <button 
               onClick={() => setActiveTab('calendar')}
-              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
-                activeTab === 'calendar' ? 'bg-primary text-white' : 'text-foreground'
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                activeTab === 'calendar' ? 'bg-white/30 backdrop-blur-xl border border-white/40 shadow-lg text-white' : 'hover:bg-white/10 text-foreground'
               }`}
             >
               <Icon name="Calendar" size={20} />
             </button>
             <button 
               onClick={() => setActiveTab('kanban')}
-              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
-                activeTab === 'kanban' ? 'bg-primary text-white' : 'text-foreground'
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                activeTab === 'kanban' ? 'bg-white/30 backdrop-blur-xl border border-white/40 shadow-lg text-white' : 'hover:bg-white/10 text-foreground'
               }`}
             >
               <Icon name="Kanban" size={20} />
             </button>
           </nav>
           <div className="mt-auto flex flex-col gap-4">
-            <button className="w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors">
+            <button className="w-10 h-10 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors">
               <Icon name="Settings" size={20} />
             </button>
-            <Avatar className="w-10 h-10">
-              <AvatarFallback className="bg-gradient-to-br from-secondary to-accent text-white">
+            <Avatar className="w-10 h-10 border-2 border-white/30">
+              <AvatarFallback className="bg-white/20 backdrop-blur-xl text-white">
                 JD
               </AvatarFallback>
             </Avatar>
@@ -161,18 +162,18 @@ export default function Index() {
         </aside>
 
         <div className="flex-1 flex flex-col">
-          <header className="h-16 bg-card/50 backdrop-blur-xl border-b flex items-center justify-between px-6">
+          <header className="h-16 bg-white/10 backdrop-blur-2xl border-b border-white/20 flex items-center justify-between px-6 relative z-10">
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Productivity Dashboard
               </h1>
-              <p className="text-sm text-muted-foreground">Управляйте своими задачами эффективно</p>
+              <p className="text-sm text-foreground/70">Управляйте своими задачами эффективно</p>
             </div>
             <div className="flex items-center gap-4">
               <div className="relative">
                 <Input 
                   placeholder="Поиск..." 
-                  className="pl-10 w-64 bg-background/50 backdrop-blur-sm"
+                  className="pl-10 w-64 bg-white/10 backdrop-blur-xl border-white/20"
                 />
                 <Icon name="Search" size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
               </div>
@@ -182,14 +183,14 @@ export default function Index() {
             </div>
           </header>
 
-          <main className="flex-1 overflow-auto p-6">
+          <main className="flex-1 overflow-auto p-6 relative z-10">
             <div className="max-w-[1600px] mx-auto">
               {activeTab === 'tasks' && (
                 <div className="animate-fade-in">
-                <Card className="p-6 bg-card/50 backdrop-blur-xl border-primary/10 shadow-xl shadow-primary/5 animate-fade-in">
+                <Card className="p-6 bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/10 animate-fade-in">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center">
                         <Icon name="CheckSquare" size={16} className="text-white" />
                       </div>
                       <h2 className="text-xl font-semibold">Задачи</h2>
@@ -207,7 +208,7 @@ export default function Index() {
                       placeholder="Новая задача..."
                       className="flex-1"
                     />
-                    <Button onClick={addTodo} size="icon" className="bg-gradient-to-r from-primary to-accent">
+                    <Button onClick={addTodo} size="icon" className="bg-white/20 backdrop-blur-xl border border-white/30 hover:bg-white/30">
                       <Icon name="Plus" size={18} />
                     </Button>
                   </div>
@@ -217,7 +218,7 @@ export default function Index() {
                       {todos.map(todo => (
                         <div 
                           key={todo.id}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors group"
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors group backdrop-blur-sm"
                         >
                           <Checkbox 
                             checked={todo.completed}
@@ -245,10 +246,10 @@ export default function Index() {
 
               {activeTab === 'notes' && (
                 <div className="animate-fade-in">
-                <Card className="p-6 bg-card/50 backdrop-blur-xl border-secondary/10 shadow-xl shadow-secondary/5 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                <Card className="p-6 bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/10 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center">
                         <Icon name="StickyNote" size={16} className="text-white" />
                       </div>
                       <h2 className="text-xl font-semibold">Заметки</h2>
@@ -282,7 +283,7 @@ export default function Index() {
                             );
                             setNotes(updated);
                           }}
-                          className="min-h-[400px] font-mono text-sm"
+                          className="min-h-[400px] font-mono text-sm bg-white/10 backdrop-blur-xl border-white/20"
                           placeholder="Начните писать..."
                         />
                       </TabsContent>
@@ -294,9 +295,9 @@ export default function Index() {
 
               {activeTab === 'calendar' && (
                 <div className="animate-fade-in">
-                  <Card className="p-6 bg-card/50 backdrop-blur-xl border-accent/10 shadow-xl shadow-accent/5">
+                  <Card className="p-6 bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/10">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center">
                         <Icon name="Calendar" size={16} className="text-white" />
                       </div>
                       <h2 className="text-xl font-semibold">Календарь</h2>
@@ -311,10 +312,10 @@ export default function Index() {
 
               {activeTab === 'kanban' && (
                 <div className="animate-fade-in">
-                <Card className="p-6 bg-card/50 backdrop-blur-xl border-accent/10 shadow-xl shadow-accent/5 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <Card className="p-6 bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center">
                         <Icon name="Kanban" size={16} className="text-white" />
                       </div>
                       <h2 className="text-xl font-semibold">Канбан</h2>
@@ -336,7 +337,7 @@ export default function Index() {
                           {kanbanTasks.filter(t => t.column === column).map(task => (
                             <div 
                               key={task.id}
-                              className="p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors cursor-move border border-border/50"
+                              className="p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors cursor-move border border-white/20 backdrop-blur-xl"
                             >
                               <p className="text-sm">{task.title}</p>
                             </div>
@@ -360,20 +361,20 @@ export default function Index() {
           {!isChatOpen ? (
             <Button 
               onClick={() => setIsChatOpen(true)}
-              className="w-14 h-14 rounded-full bg-gradient-to-br from-primary via-accent to-secondary shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all hover:scale-110"
+              className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-2xl border-2 border-white/30 shadow-2xl shadow-black/20 hover:shadow-black/30 transition-all hover:scale-110"
             >
               <Icon name="MessageCircle" size={24} />
             </Button>
           ) : (
-            <Card className="w-full h-full bg-card/95 backdrop-blur-xl border-primary/20 shadow-2xl flex flex-col animate-scale-in">
+            <Card className="w-full h-full bg-white/10 backdrop-blur-2xl border border-white/30 shadow-2xl flex flex-col animate-scale-in">
               <div className="flex items-center justify-between p-4 border-b">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center">
                     <Icon name="Bot" size={16} className="text-white" />
                   </div>
                   <div>
                     <h3 className="font-semibold">AI Ассистент</h3>
-                    <p className="text-xs text-muted-foreground">Онлайн</p>
+                    <p className="text-xs text-foreground/70">Онлайн</p>
                   </div>
                 </div>
                 <Button 
@@ -393,10 +394,10 @@ export default function Index() {
                       className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div 
-                        className={`max-w-[80%] p-3 rounded-2xl ${
+                        className={`max-w-[80%] p-3 rounded-2xl backdrop-blur-xl ${
                           msg.sender === 'user' 
-                            ? 'bg-gradient-to-br from-primary to-accent text-white' 
-                            : 'bg-muted'
+                            ? 'bg-white/30 border border-white/40 text-white shadow-lg' 
+                            : 'bg-white/20 border border-white/30'
                         }`}
                       >
                         <p className="text-sm">{msg.text}</p>
@@ -417,7 +418,7 @@ export default function Index() {
                   />
                   <Button 
                     onClick={sendMessage}
-                    className="bg-gradient-to-r from-primary to-accent"
+                    className="bg-white/20 backdrop-blur-xl border border-white/30 hover:bg-white/30"
                   >
                     <Icon name="Send" size={18} />
                   </Button>
