@@ -60,6 +60,7 @@ export default function Index() {
   ]);
   const [newMessage, setNewMessage] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'tasks' | 'notes' | 'calendar' | 'kanban'>('tasks');
 
   const addTodo = () => {
     if (newTodo.trim()) {
@@ -114,16 +115,36 @@ export default function Index() {
             <Icon name="Layout" size={20} className="text-white" />
           </div>
           <nav className="flex flex-col gap-4">
-            <button className="w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors text-primary">
+            <button 
+              onClick={() => setActiveTab('tasks')}
+              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
+                activeTab === 'tasks' ? 'bg-primary text-white' : 'text-foreground'
+              }`}
+            >
               <Icon name="CheckSquare" size={20} />
             </button>
-            <button className="w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors">
+            <button 
+              onClick={() => setActiveTab('notes')}
+              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
+                activeTab === 'notes' ? 'bg-primary text-white' : 'text-foreground'
+              }`}
+            >
               <Icon name="StickyNote" size={20} />
             </button>
-            <button className="w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors">
+            <button 
+              onClick={() => setActiveTab('calendar')}
+              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
+                activeTab === 'calendar' ? 'bg-primary text-white' : 'text-foreground'
+              }`}
+            >
               <Icon name="Calendar" size={20} />
             </button>
-            <button className="w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors">
+            <button 
+              onClick={() => setActiveTab('kanban')}
+              className={`w-10 h-10 rounded-lg hover:bg-primary/10 flex items-center justify-center transition-colors ${
+                activeTab === 'kanban' ? 'bg-primary text-white' : 'text-foreground'
+              }`}
+            >
               <Icon name="Kanban" size={20} />
             </button>
           </nav>
@@ -162,8 +183,9 @@ export default function Index() {
           </header>
 
           <main className="flex-1 overflow-auto p-6">
-            <div className="grid grid-cols-12 gap-6 max-w-[1600px] mx-auto">
-              <div className="col-span-12 lg:col-span-4">
+            <div className="max-w-[1600px] mx-auto">
+              {activeTab === 'tasks' && (
+                <div className="animate-fade-in">
                 <Card className="p-6 bg-card/50 backdrop-blur-xl border-primary/10 shadow-xl shadow-primary/5 animate-fade-in">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -218,9 +240,11 @@ export default function Index() {
                     </div>
                   </ScrollArea>
                 </Card>
-              </div>
+                </div>
+              )}
 
-              <div className="col-span-12 lg:col-span-4">
+              {activeTab === 'notes' && (
+                <div className="animate-fade-in">
                 <Card className="p-6 bg-card/50 backdrop-blur-xl border-secondary/10 shadow-xl shadow-secondary/5 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -265,9 +289,28 @@ export default function Index() {
                     ))}
                   </Tabs>
                 </Card>
-              </div>
+                </div>
+              )}
 
-              <div className="col-span-12 lg:col-span-4">
+              {activeTab === 'calendar' && (
+                <div className="animate-fade-in">
+                  <Card className="p-6 bg-card/50 backdrop-blur-xl border-accent/10 shadow-xl shadow-accent/5">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                        <Icon name="Calendar" size={16} className="text-white" />
+                      </div>
+                      <h2 className="text-xl font-semibold">Календарь</h2>
+                    </div>
+                    <div className="text-center py-20 text-muted-foreground">
+                      <Icon name="CalendarDays" size={48} className="mx-auto mb-4 opacity-50" />
+                      <p>Календарь в разработке</p>
+                    </div>
+                  </Card>
+                </div>
+              )}
+
+              {activeTab === 'kanban' && (
+                <div className="animate-fade-in">
                 <Card className="p-6 bg-card/50 backdrop-blur-xl border-accent/10 shadow-xl shadow-accent/5 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -303,7 +346,8 @@ export default function Index() {
                     ))}
                   </div>
                 </Card>
-              </div>
+                </div>
+              )}
             </div>
           </main>
         </div>
